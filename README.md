@@ -71,6 +71,25 @@ python scripts/exp_baseline_dataset.py --limit 100000 --out analysis/results/bas
 python scripts/plot_baseline_range.py --csv analysis/results/baseline_100k.csv --outdir paper/figures
 ```
 
+3) Explore a complex-plane extension map:
+
+```bash
+python scripts/exp_complex_escape_map.py --width 900 --height 900 --steps 160 --out analysis/results/complex_escape_map.png
+```
+
+4) Build residue transition graph data (classic or generalized rule):
+
+```bash
+python scripts/exp_residue_transition_graph.py --limit 50000 --modulus 32
+python scripts/exp_residue_transition_graph.py --divisor 3 --nondiv-multiplier 5 --limit 20000 --modulus 27
+```
+
+5) Scan generalized rule families:
+
+```bash
+python scripts/exp_generalized_rule_scan.py --limit 5000 --rules "2:3:1,3:5:1,3:7:1,5:7:1"
+```
+
 ---
 
 ## Paper

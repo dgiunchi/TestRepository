@@ -1,14 +1,49 @@
 \section{Introduction}
 
-The Collatz map is defined by iterating the rule ``halve if even, else $3n+1$''.
-Despite its elementary formulation, the global behavior of trajectories remains mysterious.
+The Collatz map is defined by the iteration
+\[
+T(n)=
+\begin{cases}
+n/2, & n \equiv 0 \pmod 2,\\
+3n+1, & n \equiv 1 \pmod 2.
+\end{cases}
+\]
+The conjecture states that every positive integer reaches $1$ under repeated application of $T$.
+This statement is easy to explain and easy to compute, yet it remains unresolved.
+The tension between elementary definition and elusive global behavior makes Collatz a useful case study for computational mathematics: it supports large-scale experimentation, but it also punishes overconfident interpretation.
 
-\paragraph{Scope of this work.}
-This repository focuses on \emph{reproducible computation} and \emph{visual explanation}. We aim to:
+This paper takes an explicitly empirical and reproducible stance.
+Rather than claiming a proof, we build and document a workflow for generating auditable evidence, stress-testing hypotheses, and producing figures that can be regenerated from code.
+Our premise is pragmatic: for problems where formal progress is hard, disciplined computational practice can still sharpen questions, reject weak ideas quickly, and expose robust structural phenomena.
+
+\paragraph{Research goals.}
+We focus on three goals:
 \begin{itemize}
-  \item provide baseline datasets and plots for $\sigma(n)$ and $\pi(n)$ over large ranges,
-  \item develop new visual encodings for trajectory structure,
-  \item formulate and test computationally-accessible hypotheses.
+  \item \textbf{Baseline structure.} Quantify stopping times $\sigma(n)$, peak values $\pi(n)$, and their joint behavior over large finite ranges.
+  \item \textbf{Model extensions.} Probe nearby dynamical families, including generalized piecewise maps (for example, rules of the form $n \mapsto n/p$ when divisible by $p$, else $an+c$) and analytic extensions into the complex plane.
+  \item \textbf{Interpretability.} Develop visual and graph-based diagnostics that make trajectory organization, residue transitions, and failure modes easier to inspect.
 \end{itemize}
 
-TODO: tighten narrative and cite key surveys (handled in related work).
+\paragraph{Contributions.}
+The concrete contributions of this work are:
+\begin{itemize}
+  \item a reproducible experiment stack linking scripts, datasets, and paper artifacts;
+  \item baseline pipelines for range statistics and figure generation;
+  \item a residue-class transition framework for comparing classical and generalized rules;
+  \item a complex-plane escape-map prototype for exploratory dynamical analysis;
+  \item an agent-oriented research workflow for coordinating code, paper writing, and bibliography review.
+\end{itemize}
+
+The central theme is methodological clarity: each claim in the manuscript is intended to be traceable to a script, parameter set, and output artifact.
+This design reduces ambiguity, improves reviewability, and supports iterative extension by multiple contributors.
+
+\paragraph{Scope and limitations.}
+All reported results are finite-window computations.
+Observed regularities may be suggestive, but they are not proofs of asymptotic behavior.
+Generalized rule scans are included as comparative experiments, not as equivalent formulations of the original Collatz conjecture.
+
+\paragraph{Paper organization.}
+Section~\ref{sec:related-work} positions this study within prior literature.
+Section~\ref{sec:methods} defines datasets, protocols, and reproducibility constraints.
+Section~\ref{sec:experiments} reports baseline and generalized-rule experiments.
+Section~\ref{sec:visualizations} presents visual diagnostics, and Section~\ref{sec:new-ideas} records testable hypotheses for subsequent work.
