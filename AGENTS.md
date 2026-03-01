@@ -21,6 +21,7 @@ We maintain:
 - `analysis/` - notebooks, experiment logs, and small results.
 - `docs/` - literature map, idea queue, visualization specs.
 - `agents/` - role folders with local instructions and scratchpads.
+- `agents/review/` - external-review style roles (Gemini and Jules) for QA on code, paper, and citations.
 
 ## How to use Codex skills
 - Skills live in `.agents/skills/<name>/SKILL.md`.

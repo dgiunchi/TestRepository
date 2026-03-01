@@ -9,6 +9,8 @@ Use this to give each role a clear scope and avoid stepping on each other.
 Suggested usage:
 - `codex --cd agents/paper/latex "..."`
 - `codex --cd agents/code/stats "..."`
+- `codex --cd agents/review/gemini "..."`
+- `codex --cd agents/review/jules "..."`
 
 Each agent folder can keep:
 - `INBOX.md` - tasks assigned to that agent

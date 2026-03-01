@@ -102,11 +102,19 @@ Suggested roles:
 - Paper: LaTeX + intro + related work + references
 - Research: new ideas + new visualization concepts
 - Code: stats analysis + visualization implementation + experiment scripts
+- Review: Gemini + Jules reviewer roles for code QA, paper QA, and citation/source verification
 
 Example (run Codex in a role folder):
 
 ```bash
 codex --cd agents/paper/latex "Update the paper outline and ensure it compiles."
+```
+
+Reviewer examples:
+
+```bash
+codex --cd agents/review/gemini "Review the new experiment script and flag correctness risks."
+codex --cd agents/review/jules "Review Introduction + Related Work and verify citations are real and relevant."
 ```
 
 ---
