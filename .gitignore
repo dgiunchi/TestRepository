@@ -24,3 +24,19 @@ dist/
 .idea/
 *.swp
 
+# Paper build artifacts
+paper/build/
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.fdb_latexmk
+paper/*.fls
+paper/*.log
+paper/*.out
+paper/*.synctex.gz
+
+# Analysis outputs (keep small artifacts if desired)
+analysis/results/
+
+# OS
+.DS_Store

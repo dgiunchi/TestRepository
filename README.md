@@ -1,109 +1,131 @@
-# Collatz Explorer: Visualizing the 3n+1 Conjecture
+# Collatz Lab: Visualizing and Experimenting with the 3n+1 Conjecture
 
-Discover the fascinating world of the Collatz conjecture through interactive CLI tools and mesmerizing animated visualizations. Analyze sequences, explore patterns, and watch the mathematics unfold.
+This repository is a **research workspace** for the Collatz (3x+1) conjecture.
 
-## What this project includes
+It combines:
+- **Code** for reproducible experiments and visualizations
+- A **LaTeX paper** (and a lightweight HTML companion)
+- A **multi-agent workflow** designed for Codex CLI + GitHub
 
-- `collatz_explorer.py`: CLI tool to inspect a single sequence or analyze a full range of starting values.
-- `collatz_animated_ui.py`: interactive matplotlib animation app with a startup wizard for chart selection and playback speed.
+> This project is exploratory and does **not** claim a proof of the conjecture.
 
-## Features
+---
 
-- Generate full Collatz sequences from any positive starting value.
-- Compute stopping time (steps to reach `1`) and peak value.
-- Analyze all starts in `1..N` and summarize:
-  - longest stopping time
-  - highest peak
-  - stopping-time distribution buckets
-- Animate sequence or range behavior with multiple chart types.
+## Quick start (Python)
 
-## Requirements
+### 1) Create and activate a virtual environment
 
-- Python 3.10+
-- Dependencies in `requirements.txt` (currently `matplotlib`)
+**Linux/macOS**
 
-## Quick start (Windows PowerShell)
+```bash
+python -m venv .venv
+source .venv/bin/activate
+```
 
-1. Create a virtual environment and install dependencies:
+**Windows PowerShell**
 
 ```powershell
 .\setup_env.ps1
-```
-
-2. Activate the environment:
-
-```powershell
 .\.venv\Scripts\Activate.ps1
 ```
 
-3. Run the CLI explorer:
+### 2) Install dependencies
 
-```powershell
-python collatz_explorer.py
+```bash
+pip install -r requirements.txt
 ```
 
-4. Run the animated UI:
+Optional (tests/lint):
 
-```powershell
-python collatz_animated_ui.py
+```bash
+pip install -r requirements-dev.txt
 ```
 
-## CLI usage
+### 3) Run the interactive tools
 
-### 1) Show one sequence
+CLI explorer:
 
-```powershell
-python collatz_explorer.py --mode sequence --start 27
-```
-
-### 2) Analyze a range
-
-```powershell
-python collatz_explorer.py --mode range --limit 500
-```
-
-### 3) Run both reports
-
-```powershell
+```bash
 python collatz_explorer.py --mode both --start 27 --limit 500
 ```
 
-Useful options:
+Animated UI:
 
-- `--max-steps` sets a safety cap for sequence generation.
-- `--mode` is one of `sequence`, `range`, or `both`.
-
-## Animated UI usage
-
-Default behavior starts an interactive wizard:
-
-```powershell
+```bash
 python collatz_animated_ui.py
 ```
 
-You can also skip prompts and run directly:
+---
 
-```powershell
-python collatz_animated_ui.py --no-wizard --mode range --limit 300 --interval-ms 80
+## Baseline experiment pipeline
+
+1) Generate a dataset:
+
+```bash
+python scripts/exp_baseline_dataset.py --limit 100000 --out analysis/results/baseline_100k.csv
 ```
 
-Key options:
+2) Generate paper-ready figures:
 
-- `--mode sequence|range`
-- `--start` (sequence mode)
-- `--limit` (range mode)
-- `--max-steps`
-- `--interval-ms` (animation speed in milliseconds)
-- `--no-wizard`
+```bash
+python scripts/plot_baseline_range.py --csv analysis/results/baseline_100k.csv --outdir paper/figures
+```
 
-## Project structure
+---
 
-- `collatz_explorer.py`
-- `collatz_animated_ui.py`
-- `requirements.txt`
-- `setup_env.ps1`
+## Paper
 
-## Notes
+The manuscript lives in `paper/`.
 
-- This project is educational and exploratory; it does not attempt to prove the Collatz conjecture.
-- Very large ranges or low animation intervals may be computationally heavy.
+Build the PDF:
+
+```bash
+cd paper
+latexmk -pdf -interaction=nonstopmode -output-directory=build main.tex
+```
+
+There is also a lightweight HTML companion at `paper/web/index.html` that uses **MathJax** + **PrismJS** for quick sharing.
+
+---
+
+## Multi-agent organization (Codex)
+
+### Instruction files
+- Root `AGENTS.md` defines repo-wide rules.
+- Each folder under `agents/` may include its own `AGENTS.md` to scope a role.
+
+### Skills
+Codex skills live in `.agents/skills/*/SKILL.md`.
+
+Suggested roles:
+- Orchestrator: planning + task decomposition
+- Paper: LaTeX + intro + related work + references
+- Research: new ideas + new visualization concepts
+- Code: stats analysis + visualization implementation + experiment scripts
+
+Example (run Codex in a role folder):
+
+```bash
+codex --cd agents/paper/latex "Update the paper outline and ensure it compiles."
+```
+
+---
+
+## Repository layout
+
+- `src/collatz/` - canonical core library
+- `scripts/` - reproducible experiment/plot entrypoints
+- `analysis/` - notebooks and small results
+- `paper/` - LaTeX manuscript + figures + HTML companion
+- `docs/` - literature map, idea queue, visualization specs
+- `agents/` - role workspaces for Codex
+- `.agents/skills/` - Codex skills
+
+---
+
+## Tests
+
+```bash
+pytest
+```
+

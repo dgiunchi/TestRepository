@@ -1,0 +1,53 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb, amsthm, mathtools}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{xcolor}
+
+% --- Code listings: minted if available, else listings ---
+\newif\ifminted
+\IfFileExists{minted.sty}{\mintedtrue}{\mintedfalse}
+\ifminted
+  \usepackage{minted}
+\else
+  \usepackage{listings}
+  \lstset{basicstyle=\ttfamily\small, breaklines=true, frame=single}
+\fi
+
+% --- Theorem environments ---
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{lemma}{Lemma}
+
+\title{Computational and Visual Explorations of the Collatz (3x+1) Conjecture}
+\author{\textit{(authors TBD)}}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We present a reproducible computational workspace for exploring the Collatz (3x+1) map, including baseline statistics, visualization pipelines, and a framework for testing heuristic hypotheses. This manuscript is a living document; results are paired with scripts in the accompanying repository.
+\end{abstract}
+
+\input{sections/notation}
+\input{sections/introduction}
+\input{sections/related_work}
+\input{sections/methods}
+\input{sections/experiments}
+\input{sections/visualizations}
+\input{sections/new_ideas}
+\input{sections/conclusion}
+
+\bibliographystyle{plain}
+\bibliography{refs}
+
+\appendix
+\input{sections/appendix_repro}
+
+\end{document}

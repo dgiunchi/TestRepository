@@ -1,94 +1,28 @@
 #!/usr/bin/env python3
-"""
-collatz_explorer.py
+"""collatz_explorer.py
 
 Small CLI tool to explore the Collatz conjecture:
 - Show the full sequence for a starting value.
 - Measure stopping time (steps to reach 1) and peak value.
 - Analyze all starts from 1..N to spot interesting patterns.
+
+This script is a thin CLI layer. The canonical implementation is in `src/collatz/`.
 """
 
 from __future__ import annotations
 
 import argparse
-from collections import Counter
+import sys
+from pathlib import Path
 
+# Allow running without installing the package.
+ROOT = Path(__file__).resolve().parent
+SRC = ROOT / "src"
+if SRC.exists() and str(SRC) not in sys.path:
+    sys.path.insert(0, str(SRC))
 
-def collatz_next(n: int) -> int:
-    """Return the next Collatz value."""
-    if n % 2 == 0:
-        return n // 2
-    return 3 * n + 1
-
-
-def collatz_sequence(start: int, max_steps: int = 10000) -> list[int]:
-    """Generate Collatz sequence from start until 1 (or max_steps)."""
-    if start < 1:
-        raise ValueError("start must be >= 1")
-
-    seq = [start]
-    n = start
-    steps = 0
-    while n != 1 and steps < max_steps:
-        n = collatz_next(n)
-        seq.append(n)
-        steps += 1
-    return seq
-
-
-def stopping_time(start: int, max_steps: int = 10000) -> int | None:
-    """
-    Return number of steps required to reach 1.
-    Returns None if max_steps is reached first.
-    """
-    seq = collatz_sequence(start, max_steps=max_steps)
-    if seq[-1] != 1:
-        return None
-    return len(seq) - 1
-
-
-def analyze_range(limit: int, max_steps: int = 10000) -> dict[str, object]:
-    """Analyze starts 1..limit and return summary statistics."""
-    if limit < 1:
-        raise ValueError("limit must be >= 1")
-
-    max_time_start = 1
-    max_time = 0
-    max_peak_start = 1
-    max_peak = 1
-    unresolved = 0
-    time_buckets: Counter[int] = Counter()
-
-    for start in range(1, limit + 1):
-        seq = collatz_sequence(start, max_steps=max_steps)
-        if seq[-1] != 1:
-            unresolved += 1
-            continue
-
-        time = len(seq) - 1
-        peak = max(seq)
-
-        if time > max_time:
-            max_time = time
-            max_time_start = start
-
-        if peak > max_peak:
-            max_peak = peak
-            max_peak_start = start
-
-        # Bucket stopping times into ranges of width 10 for quick pattern reading.
-        bucket = (time // 10) * 10
-        time_buckets[bucket] += 1
-
-    return {
-        "limit": limit,
-        "max_time_start": max_time_start,
-        "max_time": max_time,
-        "max_peak_start": max_peak_start,
-        "max_peak": max_peak,
-        "unresolved": unresolved,
-        "time_buckets": dict(sorted(time_buckets.items())),
-    }
+from collatz.core import collatz_sequence  # noqa: E402
+from collatz.stats import analyze_range  # noqa: E402
 
 
 def print_sequence_report(start: int, max_steps: int) -> None:
@@ -114,7 +48,7 @@ def print_range_report(limit: int, max_steps: int) -> None:
     print("")
     print("Stopping time distribution (bucketed by 10 steps):")
     for bucket_start, count in stats["time_buckets"].items():
-        bar = "#" * min(count, 60)
+        bar = "#" * min(int(count), 60)
         print(f"{bucket_start:>3}-{bucket_start+9:>3}: {count:>5} {bar}")
 
 

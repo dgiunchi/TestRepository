@@ -1,0 +1,24 @@
+\section{Notation}
+
+\begin{definition}[Collatz map]
+Define $T:\mathbb{N}\to\mathbb{N}$ by
+\[
+T(n) =
+\begin{cases}
+  n/2, & \text{if $n$ is even},\\
+  3n+1, & \text{if $n$ is odd}.
+\end{cases}
+\]
+The \emph{Collatz trajectory} of $n$ is the sequence $n, T(n), T^{2}(n), \dots$.
+\end{definition}
+
+\begin{conjecture}[Collatz]
+For every $n\in\mathbb{N}$, there exists $k\ge 0$ such that $T^{k}(n)=1$.
+\end{conjecture}
+
+We write:
+- $\sigma(n)$ for the (total) stopping time: the smallest $k$ such that $T^{k}(n)=1$, when it exists.
+- $\pi(n)$ for the peak value along the trajectory up to time $\sigma(n)$.
+
+\paragraph{Implementation note.}
+Our canonical implementation lives in `src/collatz/` and scripts in `scripts/` generate paper figures.

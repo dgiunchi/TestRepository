@@ -1,5 +1,6 @@
 param(
-    [string]$VenvDir = ".venv"
+    [string]$VenvDir = ".venv",
+    [switch]$Dev
 )
 
 $ErrorActionPreference = "Stop"
@@ -12,8 +13,16 @@ $pythonExe = Join-Path $VenvDir "Scripts\python.exe"
 Write-Host "Upgrading pip..."
 & $pythonExe -m pip install --upgrade pip
 
-Write-Host "Installing requirements from requirements.txt..."
+Write-Host "Installing runtime requirements..."
 & $pythonExe -m pip install -r requirements.txt
+
+Write-Host "Installing package (editable)..."
+& $pythonExe -m pip install -e .
+
+if ($Dev) {
+    Write-Host "Installing dev requirements..."
+    & $pythonExe -m pip install -r requirements-dev.txt
+}
 
 Write-Host ""
 Write-Host "Environment ready."

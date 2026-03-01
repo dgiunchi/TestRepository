@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Collatz Lab — Web Notes</title>
+
+  <!-- PrismJS for code highlighting -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+
+  <!-- MathJax for LaTeX math -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+  <style>
+    body { max-width: 900px; margin: 2rem auto; padding: 0 1rem; font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
+    code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+  </style>
+</head>
+<body>
+  <h1>Collatz Lab — Web Notes</h1>
+
+  <p>This page is a lightweight companion to the LaTeX paper. Math is rendered with MathJax; code uses PrismJS.</p>
+
+  <h2>Core definition</h2>
+  <p>The Collatz map is $T(n)=n/2$ if $n$ is even, and $T(n)=3n+1$ if $n$ is odd.</p>
+
+  <h2>Example code</h2>
+  <pre><code class="language-python">def collatz_next(n: int) -> int:
+    return n // 2 if n % 2 == 0 else 3 * n + 1
+</code></pre>
+
+  <h2>Next</h2>
+  <ul>
+    <li>Add plots and embed exported SVGs from <code>paper/figures</code>.</li>
+    <li>Summarize new visualization ideas from <code>docs/visualizations</code>.</li>
+  </ul>
+</body>
+</html>

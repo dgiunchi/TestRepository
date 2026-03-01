@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "github": {
+      "command": "<your-mcp-github-command>",
+      "args": ["--token", "${GITHUB_TOKEN}"]
+    },
+    "literature": {
+      "command": "<your-mcp-literature-command>",
+      "args": []
+    },
+    "zotero": {
+      "command": "<your-mcp-zotero-command>",
+      "args": []
+    }
+  }
+}
