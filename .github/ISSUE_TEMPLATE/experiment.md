@@ -1,7 +1,10 @@
 ---
 name: Experiment
 about: Propose or track a computational experiment
-labels: [experiment]
+title: ''
+labels: ''
+assignees: ''
+
 ---
 
 ## Hypothesis

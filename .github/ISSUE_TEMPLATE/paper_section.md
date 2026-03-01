@@ -1,7 +1,10 @@
 ---
 name: Paper section
 about: Draft or revise a paper section
-labels: [paper]
+title: ''
+labels: ''
+assignees: ''
+
 ---
 
 ## Section
