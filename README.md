@@ -1,6 +1,6 @@
-# Collatz Explorer
+# Collatz Explorer: Visualizing the 3n+1 Conjecture
 
-A small Python project for exploring the Collatz conjecture from both the command line and an animated visualization UI.
+Discover the fascinating world of the Collatz conjecture through interactive CLI tools and mesmerizing animated visualizations. Analyze sequences, explore patterns, and watch the mathematics unfold.
 
 ## What this project includes
 
