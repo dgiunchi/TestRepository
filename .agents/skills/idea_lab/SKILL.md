@@ -1,6 +1,8 @@
 ---
 name: idea-lab
 description: Generate new research directions for the Collatz conjecture that can be tested computationally. Turn each idea into a falsifiable hypothesis and an experiment spec.
+metadata:
+  short-description: Generate falsifiable research ideas
 ---
 
 # Idea Lab Skill

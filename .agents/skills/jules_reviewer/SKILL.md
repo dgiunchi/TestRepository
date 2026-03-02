@@ -1,6 +1,8 @@
 ---
 name: jules-reviewer
 description: Perform editorial and literature-quality review for paper/docs plus citation integrity checks. Use when validating writing clarity, argument structure, related-work quality, and reference authenticity including Google-lab-backed sources.
+metadata:
+  short-description: Editorial and citation QA
 ---
 
 # Jules Reviewer Skill

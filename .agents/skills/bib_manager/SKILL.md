@@ -1,6 +1,8 @@
 ---
 name: bib-manager
 description: Maintain the BibTeX database and citations for the paper. Ensure keys are consistent, fields are complete, and citations appear where needed.
+metadata:
+  short-description: Maintain refs and citation keys
 ---
 
 # Bibliography Manager Skill

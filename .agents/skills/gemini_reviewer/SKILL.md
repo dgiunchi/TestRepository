@@ -1,6 +1,8 @@
 ---
 name: gemini-reviewer
 description: Perform strict technical review for code, experiments, and paper-methods consistency. Use when a change needs bug/risk detection, reproducibility checks, and source-verification of technical claims, including Google-lab-backed references.
+metadata:
+  short-description: Technical QA for code and methods
 ---
 
 # Gemini Reviewer Skill

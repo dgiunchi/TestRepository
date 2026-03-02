@@ -1,6 +1,6 @@
 ---
 name: related-work
-description: Build the related-work section: find, categorize, and summarize key literature on the 3x+1 problem, computational searches, heuristics, and visualization approaches. Maintain bib entries.
+description: "Build the related-work section: find, categorize, and summarize key literature on the 3x+1 problem, computational searches, heuristics, and visualization approaches. Maintain bib entries."
 ---
 
 # Related Work Skill

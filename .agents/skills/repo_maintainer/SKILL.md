@@ -1,6 +1,6 @@
 ---
 name: repo-maintainer
-description: Keep the repository tidy: structure, tooling, tests, CI, and developer experience. Ensure changes are documented and backwards-compatible.
+description: "Keep the repository tidy: structure, tooling, tests, CI, and developer experience. Ensure changes are documented and backwards-compatible."
 ---
 
 # Repo Maintainer Skill

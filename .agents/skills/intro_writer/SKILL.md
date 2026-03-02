@@ -1,6 +1,8 @@
 ---
 name: intro-writer
 description: Draft and refine the paper introduction and problem statement for the Collatz conjecture, matching the repo's notation and keeping claims conservative.
+metadata:
+  short-description: Draft conservative paper introduction
 ---
 
 # Introduction Writer Skill

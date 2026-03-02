@@ -1,6 +1,8 @@
 ---
 name: latex-prism
 description: Write and maintain the LaTeX paper in paper/. Use clean math, consistent notation, and add code listings suitable for PrismJS (HTML) and PDF (minted/listings). Ensure the paper builds.
+metadata:
+  short-description: Maintain LaTeX and HTML companion
 ---
 
 # LaTeX + Prism Skill
