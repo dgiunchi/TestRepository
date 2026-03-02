@@ -8,6 +8,7 @@ Use this to give each role a clear scope and avoid stepping on each other.
 
 Suggested usage:
 - `codex --cd agents/paper/latex "..."`
+- `codex --cd agents/paper/figures "Generate/update figures from analysis/results for paper/figures."`
 - `codex --cd agents/code/stats "..."`
 - `codex --cd agents/review/gemini "..."`
 - `codex --cd agents/review/jules "..."`

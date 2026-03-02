@@ -156,3 +156,23 @@ codex --cd agents/review/jules "Review Introduction + Related Work and verify ci
 pytest
 ```
 
+---
+
+## MCP setup (optional)
+
+This repo includes `mcp/mcp.json` and `mcp/mcp.example.json` with starter servers:
+- `filesystem`
+- `github`
+- `memory`
+
+If you cannot set system environment variables, use a local file:
+
+1. Copy `mcp/.env-default` to `mcp/.env`
+2. Put your token in `mcp/.env`:
+
+```env
+GITHUB_TOKEN=ghp_or_github_pat_value
+```
+
+Only the `github` MCP server needs this token.
+

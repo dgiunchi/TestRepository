@@ -40,3 +40,6 @@ analysis/results/
 
 # OS
 .DS_Store
+
+# Local MCP secrets
+mcp/.env

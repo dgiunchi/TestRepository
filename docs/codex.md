@@ -31,3 +31,8 @@ codex --cd agents/research/visualizations "Propose 2 new plot ideas and write sp
 ```bash
 codex --cd agents/code/viz "Implement the spec 'residue-class heatmap' and add a script under scripts/."
 ```
+
+### Generate paper figures from stats outputs
+```bash
+codex --cd agents/paper/figures "Use analysis/results CSVs to regenerate paper/figures with reproducible plot scripts."
+```
