@@ -29,4 +29,19 @@ GITHUB_TOKEN=ghp_or_github_pat_value
 
 Only the `github` MCP server uses this token. `filesystem` and `memory` do not need it.
 
+## Context7 via remote MCP URL
+If your MCP client supports URL-based servers (TOML-style config), keep the API key in `mcp/.env` and reference it from headers:
+
+```toml
+[mcp_servers.context7]
+url = "https://mcp.context7.com/mcp"
+http_headers = { "CONTEXT7_API_KEY" = "${CONTEXT7_API_KEY}" }
+```
+
+Add to `mcp/.env`:
+
+```env
+CONTEXT7_API_KEY=ctx7sk_replace_with_real_key
+```
+
 > Note: exact MCP configuration depends on the client you use (Codex CLI, editor integration, etc.). Treat this folder as the place to document and version the configuration for your workflow.
