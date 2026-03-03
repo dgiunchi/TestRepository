@@ -13,3 +13,6 @@ Create `docs/literature/<citation-key>.md` with:
 ## Status
 - [ ] Seed with 5-10 core references (survey + computational work)
 
+## Automation
+- See `docs/literature/AUTOMATION.md` for the reproducible BibTeX -> Zotero -> PDF -> notes pipeline.
+
