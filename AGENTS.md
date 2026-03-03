@@ -27,6 +27,29 @@ We maintain:
 - Skills live in `.agents/skills/<name>/SKILL.md`.
 - Prefer invoking a skill explicitly when you're doing role-specific work (LaTeX, literature, stats, viz, orchestration).
 
+## Mandatory reviewer loop
+- Every writer task must include reviewer QA before it is considered done.
+- Required flow for each task:
+  1. Writer agent drafts or implements changes.
+  2. Reviewer agent performs an explicit review pass.
+  3. Writer addresses findings (or documents why not).
+  4. Final output includes a short review status note.
+- Reviewer routing:
+  - Code/experiments/scripts: use `agents/review/gemini` (or `gemini-reviewer` skill).
+  - Paper/docs/citations/editorial quality: use `agents/review/jules` (or `jules-reviewer` skill).
+- Minimum acceptance for completion:
+  - No unaddressed critical/high-severity findings.
+  - Reproducibility checks documented for code changes.
+  - Citation and claim checks documented for paper/literature changes.
+
+## Bibliography preflight gate
+- Any task touching bibliography or related work must run:
+  - `.\.venv\Scripts\python.exe scripts/preflight_related_work.py --bib paper/refs.bib --run-external-checks`
+- A writer task is not complete unless this gate returns exit code `0`.
+- The resulting report artifact is:
+  - `analysis/results/literature_sync_report.json`
+- Process details: `docs/agentic/PAPER_PREFLIGHT_GATE.md`
+
 ## Default commands
 ### Python
 - Create venv: `python -m venv .venv`

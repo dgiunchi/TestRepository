@@ -21,6 +21,12 @@ This repo includes `scripts/lit_sync_pipeline.py` to automate literature ingesti
   --strict
 ```
 
+Preflight wrapper (recommended for writer agents):
+
+```powershell
+.\.venv\Scripts\python.exe scripts/preflight_related_work.py --bib paper/refs.bib --run-external-checks
+```
+
 Default knowledge folder:
 - `docs/literature/skill_knowledge/`
   - `pdfs/`
